@@ -1,0 +1,456 @@
+{
+  "info": {
+    "_postman_id": "cfdae49e-7b40-479d-aaf7-8b08cdc9f58b",
+    "name": "Assignment 4",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51578959",
+    "_collection_link": "https://go.postman.co/collection/51578959-cfdae49e-7b40-479d-aaf7-8b08cdc9f58b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get Books",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Books",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/books",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "books"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "417"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 22 Jan 2026 06:02:20 GMT"
+            },
+            {
+              "key": "X-Amzn-Trace-Id",
+              "value": "Root=1-6971bd6c-5dba69340dd75b9439347a49;Parent=01f8fa8497e47585;Sampled=0;Lineage=1:9ee0f5ed:0"
+            },
+            {
+              "key": "x-amzn-RequestId",
+              "value": "ebc24005-46ff-4351-b804-d518e317dfb3"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Access-Control-Allow-Headers",
+              "value": "Content-Type, Authorization, X-Amz-Date, X-Api-Key, X-Amz-Security-Token"
+            },
+            {
+              "key": "x-amz-apigw-id",
+              "value": "XkqJDGTGoAMEebg="
+            },
+            {
+              "key": "Access-Control-Allow-Methods",
+              "value": "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+            },
+            {
+              "key": "X-Cache",
+              "value": "Miss from cloudfront"
+            },
+            {
+              "key": "Via",
+              "value": "1.1 5572dc113e22c24b0817b27dceac7bdc.cloudfront.net (CloudFront)"
+            },
+            {
+              "key": "X-Amz-Cf-Pop",
+              "value": "MCT50-P3"
+            },
+            {
+              "key": "X-Amz-Cf-Id",
+              "value": "99H13Apgx37Yi4Y3QpP19ZoS6JWzNtHLDGmYLwzujcOcpEz3hRbPBQ=="
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"name\": \"The Russian\",\n        \"type\": \"fiction\",\n        \"available\": true\n    },\n    {\n        \"id\": 3,\n        \"name\": \"The Vanishing Half\",\n        \"type\": \"fiction\",\n        \"available\": true\n    },\n    {\n        \"id\": 4,\n        \"name\": \"The Midnight Library\",\n        \"type\": \"fiction\",\n        \"available\": true\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Viscount Who Loved Me\",\n        \"type\": \"fiction\",\n        \"available\": true\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Just as I Am\",\n        \"type\": \"non-fiction\",\n        \"available\": false\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Untamed\",\n        \"type\": \"non-fiction\",\n        \"available\": true\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "POST Auth",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const res = pm.response.json();\r",
+              "    \"fb3abc2753f152466080ce54984fbcb15fd1dc41787d1561c41f3b21f1c167e7\"\r",
+              "pm.collectionVariables.set(\"\", res.accessToken);\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"clientName\": \"Dani\",\r\n  \"clientEmail\": \"danibusiness60@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api-clients?Content-Type=application/json",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api-clients"
+          ],
+          "query": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST order",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const res = pm.response.json();\r",
+              "pm.environment.set(\"orderId\", res.orderId);\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"bookId\": 1,\r\n  \"customerName\": \"Dani\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://simple-books-api.click/orders",
+          "protocol": "https",
+          "host": [
+            "simple-books-api",
+            "click"
+          ],
+          "path": [
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Single order",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/FMf3uzN0cn3LXpVH7Eakt",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "FMf3uzN0cn3LXpVH7Eakt"
+          ],
+          "query": [
+            {
+              "key": "Content-Type",
+              "value": "application/js",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT ordeer",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// Pre-request script to create an order and get a valid orderId",
+              "const token = pm.collectionVariables.get(\"token\") || pm.environment.get(\"token\");",
+              "",
+              "const createOrderRequest = {",
+              "    url: \"https://simple-books-api.click/orders\",",
+              "    method: \"POST\",",
+              "    header: {",
+              "        \"Content-Type\": \"application/json\",",
+              "        \"Authorization\": \"Bearer \" + token",
+              "    },",
+              "    body: {",
+              "        mode: \"raw\",",
+              "        raw: JSON.stringify({",
+              "            \"bookId\": 1,",
+              "            \"customerName\": \"TestCustomer\"",
+              "        })",
+              "    }",
+              "};",
+              "",
+              "try {",
+              "    const response = await pm.sendRequest(createOrderRequest);",
+              "    const jsonData = response.json();",
+              "    ",
+              "    if (jsonData.orderId) {",
+              "        pm.collectionVariables.set(\"orderId\", jsonData.orderId);",
+              "        console.log(\"Created order with ID: \" + jsonData.orderId);",
+              "    } else {",
+              "        console.error(\"Failed to create order:\", jsonData);",
+              "    }",
+              "} catch (err) {",
+              "    console.error(\"Error creating order:\", err);",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Test script to validate the PUT order response",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response indicates successful update\", function () {",
+              "    // The Simple Books API typically returns 204 No Content for successful updates",
+              "    // or a confirmation message. Let's check for success status codes.",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
+              "});",
+              "",
+              "pm.test(\"If response has body, verify customerName update\", function () {",
+              "    if (pm.response.text() && pm.response.text().length > 0) {",
+              "        try {",
+              "            const jsonData = pm.response.json();",
+              "            if (jsonData.customerName) {",
+              "                pm.expect(jsonData.customerName).to.eql(\"Dani\");",
+              "            }",
+              "        } catch (e) {",
+              "            // Response might not be JSON, which is acceptable for 204 responses",
+              "            console.log(\"Response is not JSON or is empty - this is expected for successful updates\");",
+              "        }",
+              "    }",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"customerName\": \"Dani\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://simple-books-api.click/orders/{{orderId}}",
+          "protocol": "https",
+          "host": [
+            "simple-books-api",
+            "click"
+          ],
+          "path": [
+            "orders",
+            "{{orderId}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "orders",
+      "value": ""
+    },
+    {
+      "key": "orderid",
+      "value": ""
+    },
+    {
+      "key": "orderId",
+      "value": ""
+    }
+  ]
+}
